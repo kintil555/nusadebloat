@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 #   NUSADEBLOAT - IRM Launcher
 #   Cara pakai (PowerShell as Admin):
 #   irm https://raw.githubusercontent.com/YourUser/Nusadebloat/main/launch.ps1 | iex
@@ -48,9 +48,9 @@ $scriptUrl = "https://raw.githubusercontent.com/kintil555/nusadebloat/main/Nusad
 try {
     # Download dengan encoding UTF-8 agar emoji & karakter unicode tidak rusak
     $response = Invoke-WebRequest -Uri $scriptUrl -UseBasicParsing -ErrorAction Stop
-    # Tulis ulang dengan BOM UTF-8 supaya PowerShell baca encoding-nya dengan benar
-    $utf8Bom = New-Object System.Text.UTF8Encoding $true
-    [System.IO.File]::WriteAllText($tmpPath, $response.Content, $utf8Bom)
+    # Tulis TANPA BOM — karena dijalankan via & (bukan iex), BOM akan bikin error "term '?#' not recognized"
+    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText($tmpPath, $response.Content, $utf8NoBom)
     Write-Host "  [✓] Download selesai." -ForegroundColor Green
 } catch {
     Write-Host "  [!] Tidak bisa download dari URL. Mencari file lokal..." -ForegroundColor Yellow
