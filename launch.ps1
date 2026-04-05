@@ -48,7 +48,7 @@ Write-Host "  [*] Mengunduh Nusadebloat..." -ForegroundColor Cyan
 # $scriptUrl = "https://raw.githubusercontent.com/YourUser/Nusadebloat/main/Nusadebloat.ps1"
 #
 # Untuk sementara, jalankan dari path lokal jika tidak di-host:
-$scriptUrl = "https://raw.githubusercontent.com/YourUser/Nusadebloat/main/Nusadebloat.ps1"
+$scriptUrl = "https://raw.githubusercontent.com/kintil555/nusadebloat/main/Nusadebloat.ps1"
 
 try {
     # Coba download dari URL
