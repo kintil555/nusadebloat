@@ -10,7 +10,7 @@
 Buka **PowerShell sebagai Administrator**, lalu jalankan:
 
 ```powershell
-irm https://raw.githubusercontent.com/YourUser/Nusadebloat/main/launch.ps1 | iex
+irm https://raw.githubusercontent.com/kintil555/nusadebloat/main/launch.ps1 | iex
 ```
 
 ### Metode 2: Jalankan Langsung
