@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 #   NUSADEBLOAT - Windows Debloat & Tweak Tool
 #   By: Nusadebloat | Run via: irm <url> | iex
 #   Requires: PowerShell 5.1+ | Run as Administrator

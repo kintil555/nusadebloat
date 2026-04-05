@@ -1,4 +1,4 @@
-# ============================================================
+﻿# ============================================================
 #   NUSADEBLOAT - IRM Launcher
 #   Cara pakai (PowerShell as Admin):
 #   irm https://raw.githubusercontent.com/YourUser/Nusadebloat/main/launch.ps1 | iex
@@ -43,17 +43,14 @@ $tmpPath = "$env:TEMP\Nusadebloat.ps1"
 
 Write-Host "  [*] Mengunduh Nusadebloat..." -ForegroundColor Cyan
 
-# === GANTI URL INI DENGAN URL RAW SCRIPT ANDA ===
-# Contoh GitHub raw URL:
-# $scriptUrl = "https://raw.githubusercontent.com/YourUser/Nusadebloat/main/Nusadebloat.ps1"
-#
-# Untuk sementara, jalankan dari path lokal jika tidak di-host:
 $scriptUrl = "https://raw.githubusercontent.com/kintil555/nusadebloat/main/Nusadebloat.ps1"
 
 try {
-    # Coba download dari URL
-    $wc = New-Object System.Net.WebClient
-    $wc.DownloadFile($scriptUrl, $tmpPath)
+    # Download dengan encoding UTF-8 agar emoji & karakter unicode tidak rusak
+    $response = Invoke-WebRequest -Uri $scriptUrl -UseBasicParsing -ErrorAction Stop
+    # Tulis ulang dengan BOM UTF-8 supaya PowerShell baca encoding-nya dengan benar
+    $utf8Bom = New-Object System.Text.UTF8Encoding $true
+    [System.IO.File]::WriteAllText($tmpPath, $response.Content, $utf8Bom)
     Write-Host "  [✓] Download selesai." -ForegroundColor Green
 } catch {
     Write-Host "  [!] Tidak bisa download dari URL. Mencari file lokal..." -ForegroundColor Yellow
